@@ -1,0 +1,15 @@
+Tengo que esconder los selectores y el buscador en la pagina de login y registro
+
+
+el logo de la web no nos lleva a inicio, donde queiro que salga un personaje random de la api
+
+el seleccionador no permite usar espacios
+
+
+la pagina de cargar miestra el error del la api y no queda bien
+
+
+
+
+
+#FCF4EC es el color del fondo que vas a poner en el nav fixec porqeu a lo locox
