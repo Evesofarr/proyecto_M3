@@ -1,4 +1,4 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import './App.scss';
 import Villagers from './assets/Components/Villagers';
@@ -21,6 +21,11 @@ function App() {
   };
   const [theme, setTheme] = useState(getDefaultTheme());
   const [changeSel, setChangeSel] = useState("");
+  const navigate = useNavigate();
+
+  function inicio() {
+    navigate('/');
+  }
 
   return (
     <>
@@ -29,7 +34,7 @@ function App() {
           <div className={`theme-${theme}`}>
             <div className="body">
               <header>
-                <h1 className='titulo'>Nookapedia</h1>
+                <h1 className='titulo' onClick={inicio}>Nookapedia</h1>
                 <nav>
                   <ul>
                     <li>

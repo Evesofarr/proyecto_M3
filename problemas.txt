@@ -1,5 +1,3 @@
-Tengo que esconder los selectores y el buscador en la pagina de login y registro
-
 el logo de la web no nos lleva a inicio, donde queiro que salga un personaje random de la api
 
 el seleccionador no permite usar espacios
