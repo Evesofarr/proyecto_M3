@@ -1,4 +1,4 @@
-export default function PopUpFunction({ animal, handleClose }) {
+export default function PopUp({ animal, handleClose }) {
 
     return (
         <>

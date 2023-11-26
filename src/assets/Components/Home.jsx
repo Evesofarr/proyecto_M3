@@ -1,34 +1,46 @@
-import { useEffect, useState } from "react";
 import PopUp from "../Components/PopUp";
-import VillagersList from "./VillagersList";
+import { useEffect, useState } from "react";
+import Card from "./Card";
 
-export default function Villagers({ changeSel, setChangeSel }) {
-
-    const [animals, setAnimals] = useState(null);
-    const [filteredAnimals, setFilteredAnimals] = useState(null);
+export default function Home() {
     const [animal, setAnimal] = useState(null);
     const [popUp, setPopUp] = useState('');
     const [loaded, setLoaded] = useState(false);
+    const [filteredAnimals, setFilteredAnimals] = useState(null);
 
     useEffect(() => {
         apiCall('http://localhost:3005/api/villagers/');
     }, []);
+
+    useEffect(() => {
+        console.log(filteredAnimals);
+    }, [filteredAnimals]);
+
     function apiCall(url) {
         fetch(url)
             .then(res => res.json())
             .then(res => {
-                setAnimals(res);
-                setFilteredAnimals(res);
                 setLoaded(true);
+                randomAnimal(res);
+                infinite(res);
+
             })
             .catch(err => console.log(err));
     };
 
-    function handleInputChange(e) {
-        e.preventDefault();
-        console.log(e.target.villager.value);
+    function infinite(animals) {
+        function updateAnimal() {
+            randomAnimal(animals);
+            setTimeout(updateAnimal, 5000);
+        }
 
-        setFilteredAnimals([...animals.filter(animal => animal.name.toLowerCase().includes(e.target.villager.value.toLowerCase()))]);
+        updateAnimal();
+    }
+
+    function randomAnimal(animals) {
+        const random = Math.floor(Math.random() * (animals.length - 1));
+        let randomAnimal = animals[random];
+        setFilteredAnimals(randomAnimal);
     };
 
     function handleClose() {
@@ -43,16 +55,9 @@ export default function Villagers({ changeSel, setChangeSel }) {
 
     return (
         <>
-            <form className='buscador' onSubmit={handleInputChange}>
-                <input className='selector'
-                    placeholder="Search..."
-                    name='villager'
-                />
-                <button type='submit' className='go'>Search</button>
-            </form>
             {popUp ? <PopUp handleClose={handleClose} animal={animal} /> : ''}
             {loaded ?
-                <VillagersList popInfo={popInfo} animals={filteredAnimals} />
+                <Card popInfo={popInfo} animals={filteredAnimals} />
                 : <div className="loader"><img src="../../../public/loader.gif" alt="" /></div>}
         </>
     );
