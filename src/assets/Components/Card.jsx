@@ -1,4 +1,4 @@
-export default function Card({ animals }) {
+export default function Card({ popInfo, animals }) {
 
     return (
         <section className="cardHomepage">

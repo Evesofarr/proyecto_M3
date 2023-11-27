@@ -95,6 +95,11 @@ $tamaño: 80px;
     padding-bottom: 140px;
 }
 
+.cardHomepage {
+    width: 20em;
+    margin: auto;
+}
+
 .card {
     box-shadow: 0px 5px 5px rgb(247 212 178);
     border-radius: 10px;
@@ -270,7 +275,8 @@ $tamaño: 80px;
     animation: movimientoArribaAbajo 2s ease-in-out infinite;
 }
 
-.go, .uButton {
+.go,
+.uButton {
     background-color: #fbeee0;
     border: 2px solid #422800;
     border-radius: 30px;
@@ -322,6 +328,7 @@ $tamaño: 80px;
 .go:hover {
     background-color: #fff;
 }
+
 .uButton:hover {
     background-color: #fff;
 }
@@ -365,14 +372,21 @@ $tamaño: 80px;
     margin: 20px;
     color: themed('colorOption');
 }
-.uButtonSpecial{
+
+.uButtonSpecial {
     border: none;
-    border-bottom: 2px solid grey;
     background-color: transparent;
     color: grey;
 }
 
-.logRegInput{
+.aqui {
+    border-bottom: 2px solid grey;
+}
+.oculto{
+    display: none;
+}
+
+.logRegInput {
     background: #f7ebdf;
     background-size: 24px;
     width: 500px;
@@ -381,7 +395,7 @@ $tamaño: 80px;
     padding: 10px 10px 10px 30px;
     outline: none;
     margin: 20px;
-    color: themed('colorOption');
+    color: temed('colorOption');
 }
 
 .opciones {
@@ -405,6 +419,7 @@ header {
 .titulo {
     color: #61B948;
     text-shadow: 2px 2px 4px #61B948;
+    text-decoration: none;
 }
 
 .linkVillagers,
@@ -485,7 +500,7 @@ header {
     box-shadow: 0 0 0 0.125em var(--primaryT);
     padding: 0.25em;
     width: 6em;
-    height:3em;
+    height: 3em;
     appearance: none;
     -webkit-appearance: none;
     cursor: pointer;
@@ -570,10 +585,32 @@ header {
 .theme__toggle-wrap {
     margin: 0 0.75em;
 }
-.toggle-checkbox{
+
+.toggle-checkbox {
     display: flex;
     flex-direction: row-reverse;
 }
-.toggle-btn__input-label{
+
+.toggle-btn__input-label {
     display: none;
+}
+
+.log-register {
+    width: 15em;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.uButtonSpecial {
+    font-size: 1.5em;
+}
+.loginForm, .registerForm{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+}
+.uButton{
+    width: 7em;
 }

@@ -1,5 +1,5 @@
-import { BrowserRouter, Link, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import './App.scss';
 import Villagers from './assets/Components/Villagers';
 import Species from './assets/Components/Species';
@@ -10,6 +10,8 @@ import Filters from './assets/Components/Filters';
 import { ThemeContext } from './contexts/theme-context';
 import ToggleTheme from './assets/Components/ToggleTheme';
 import Home from './assets/Components/Home';
+import Register from './assets/Components/Register';
+import Profile from './assets/Components/Profile';
 
 
 function App() {
@@ -21,11 +23,14 @@ function App() {
   };
   const [theme, setTheme] = useState(getDefaultTheme());
   const [changeSel, setChangeSel] = useState("");
-  const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  function inicio() {
-    navigate('/');
-  }
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      setIsAuthenticated(true);
+    }
+  }, []);
 
   return (
     <>
@@ -34,7 +39,7 @@ function App() {
           <div className={`theme-${theme}`}>
             <div className="body">
               <header>
-                <h1 className='titulo' onClick={inicio}>Nookapedia</h1>
+                <Link to="/" className='titulo'><h1  >Nookapedia</h1></Link>
                 <nav>
                   <ul>
                     <li>
@@ -42,8 +47,8 @@ function App() {
                     </li>
                   </ul>
                 </nav>
-                <div>
-                  <Link className='linkUser' to={'/user'}>Login</Link>
+                <div>{localStorage.getItem('token') ? <Link className='linkUser AccesoUsuario' to={'/profile'}>Profile</Link> : <Link className='linkUser' to={'/user'}>Login</Link>}
+
                 </div>
               </header>
               <ToggleTheme />
@@ -56,6 +61,8 @@ function App() {
                   <Route path='/personality/:personality' element={<><Filters changeSel={changeSel} setChangeSel={setChangeSel} /> <Personality changeSel={changeSel} setChangeSel={setChangeSel} /></>} />
                   <Route path='/gender/:gender' element={<><Filters changeSel={changeSel} setChangeSel={setChangeSel} /><Gender changeSel={changeSel} setChangeSel={setChangeSel} /></>} />
                   <Route path='/user' element={<User />} />
+                  <Route path='/profile' element={<Profile />} />
+                  <Route path='user/register' element={<Register />} />
                 </Routes>
               </main>
               <div className='ola'><img src="../public/bgFooter.png" alt="" /></div>
@@ -64,7 +71,7 @@ function App() {
                 <p>Made with MUCHISIMA anxiety y ayuda de Peio ♡</p>
                 <img className='iconoFooter' src="../public/ico.png" alt="Icono Juego" />
               </footer>
-              <div><a className='up' href="#">TOP</a></div>
+              <div><a className="up" href="#">TOP</a></div>
             </div>
           </div>
         </ThemeContext.Provider>

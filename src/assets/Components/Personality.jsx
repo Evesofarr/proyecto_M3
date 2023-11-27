@@ -3,16 +3,22 @@ import PopUp from "../Components/PopUp";
 import VillagersList from "./VillagersList";
 
 export default function Personality({ changeSel }) {
-
     const [animals, setAnimals] = useState(null);
     const [filteredAnimals, setFilteredAnimals] = useState(null);
     const [animal, setAnimal] = useState(null);
     const [popUp, setPopUp] = useState('');
     const [loaded, setLoaded] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    useEffect(() => {
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) {
+            setIsAuthenticated(true);
+        }
+    }, []);
 
     useEffect(() => {
         if (changeSel !== "") {
-
             apiCall('http://localhost:3005/api/personality/' + changeSel);
         }
     }, [changeSel]);

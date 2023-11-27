@@ -3,14 +3,22 @@ import PopUp from "../Components/PopUp";
 import VillagersList from "./VillagersList";
 
 export default function Species({ changeSel }) {
-
     const [animals, setAnimals] = useState(null);
     const [filteredAnimals, setFilteredAnimals] = useState(null);
     const [animal, setAnimal] = useState(null);
     const [popUp, setPopUp] = useState('');
     const [loaded, setLoaded] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) {
+            setIsAuthenticated(true);
+        }
+    }, []);
+
+    useEffect(() => {
+        console.log(changeSel);
         if (changeSel !== "") {
             apiCall('http://localhost:3005/api/species/' + changeSel);
         }
@@ -20,11 +28,16 @@ export default function Species({ changeSel }) {
         fetch(url)
             .then(res => res.json())
             .then(res => {
+                console.log(res);
                 setAnimals(res);
                 setFilteredAnimals(res);
                 setLoaded(true);
             });
     };
+
+    useEffect(() => {
+        console.log(loaded);
+    }, []);
 
     function handleInputChange(e) {
         e.preventDefault();

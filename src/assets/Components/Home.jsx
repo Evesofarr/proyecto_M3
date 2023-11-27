@@ -7,6 +7,14 @@ export default function Home() {
     const [popUp, setPopUp] = useState('');
     const [loaded, setLoaded] = useState(false);
     const [filteredAnimals, setFilteredAnimals] = useState(null);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    useEffect(() => {
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) {
+            setIsAuthenticated(true);
+        }
+    }, []);
 
     useEffect(() => {
         apiCall('http://localhost:3005/api/villagers/');

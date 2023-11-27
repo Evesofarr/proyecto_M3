@@ -9,10 +9,16 @@ export default function Villagers({ changeSel, setChangeSel }) {
     const [animal, setAnimal] = useState(null);
     const [popUp, setPopUp] = useState('');
     const [loaded, setLoaded] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) {
+            setIsAuthenticated(true);
+        }
         apiCall('http://localhost:3005/api/villagers/');
     }, []);
+
     function apiCall(url) {
         fetch(url)
             .then(res => res.json())

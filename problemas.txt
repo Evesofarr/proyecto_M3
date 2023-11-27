@@ -1,16 +1,13 @@
-el logo de la web no nos lleva a inicio, donde queiro que salga un personaje random de la api
-
 el seleccionador no permite usar espacios
 
 la pagina de cargar muestra el error del la api y no queda bien
 
 el registro del usuario
 
-personaje random al inicio de la web
-
 poder favear personajes cuando estás dentro
 
 Modificar el aviso cuando no hay resultados
 
+que en el perfil se vea la lista de los favs
 
-Cuando estoy en http://localhost:5173/user el boton de up necesito que sea display none
+Personality no fucniona

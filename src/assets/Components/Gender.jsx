@@ -11,6 +11,14 @@ export default function Gender({ changeSel }) {
     const [animal, setAnimal] = useState(null);
     const [popUp, setPopUp] = useState('');
     const [loaded, setLoaded] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    useEffect(() => {
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) {
+            setIsAuthenticated(true);
+        }
+    }, []);
 
     useEffect(() => {
         if (changeSel !== "") {
