@@ -48,7 +48,7 @@ export default function Home() {
     function randomAnimal(animals) {
         const random = Math.floor(Math.random() * (animals.length - 1));
         let randomAnimal = animals[random];
-        setFilteredAnimals(randomAnimal);
+        setFilteredAnimals([randomAnimal]);
     };
 
     function handleClose() {
