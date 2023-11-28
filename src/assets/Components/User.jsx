@@ -55,7 +55,7 @@ export default function User() {
                             </form>
                         </>
                         : <>
-                        //Lo que psa cuando estás logeado que aun no lo has metido. deberia ser un map de los animales que tiene en fav el usuario
+                        //Lo que psa cuando estás logeado que aun no lo has metido. deberia ser un map de los animales que tiene en fav el usuario que esta en otro componente
 
                         </>}
                 </>

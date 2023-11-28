@@ -35,10 +35,6 @@ export default function Species({ changeSel }) {
             });
     };
 
-    useEffect(() => {
-        console.log(loaded);
-    }, []);
-
     function handleInputChange(e) {
         e.preventDefault();
         console.log(e.target.villager.value);

@@ -24,6 +24,7 @@ function App() {
   const [theme, setTheme] = useState(getDefaultTheme());
   const [changeSel, setChangeSel] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [heart, setHeart] = useState("♡");
 
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
@@ -31,6 +32,15 @@ function App() {
       setIsAuthenticated(true);
     }
   }, []);
+
+
+
+
+  function handleLike() {
+    heart === "♡" ? setHeart("❤") : setHeart("♡");
+    // setHeart(heart === "♡" ? "❤" : "♡");
+  };
+
 
   return (
     <>
@@ -55,11 +65,19 @@ function App() {
               <main >
                 <Routes>
                   <Route path='/' element={<Home />} />
-                  <Route path='/villagers' element={<>
-                    <Filters changeSel={changeSel} setChangeSel={setChangeSel} /> <Villagers changeSel={changeSel} setChangeSel={setChangeSel} /></>} />
-                  <Route path='/species/:specie' element={<><Filters changeSel={changeSel} setChangeSel={setChangeSel} /><Species changeSel={changeSel} setChangeSel={setChangeSel} /></>} />
-                  <Route path='/personality/:personality' element={<><Filters changeSel={changeSel} setChangeSel={setChangeSel} /> <Personality changeSel={changeSel} setChangeSel={setChangeSel} /></>} />
-                  <Route path='/gender/:gender' element={<><Filters changeSel={changeSel} setChangeSel={setChangeSel} /><Gender changeSel={changeSel} setChangeSel={setChangeSel} /></>} />
+                  <Route path='/villagers'
+                    element={<>
+                      <Filters changeSel={changeSel} setChangeSel={setChangeSel} handleLike={handleLike} /> <Villagers changeSel={changeSel} handleLike={handleLike} setChangeSel={setChangeSel} heart={heart} />
+                    </>} />
+                  <Route path='/species/:specie' element={<>
+                    <Filters changeSel={changeSel} handleLike={handleLike} setChangeSel={setChangeSel} /><Species changeSel={changeSel} setChangeSel={setChangeSel} />
+                  </>} />
+                  <Route path='/personality/:personality' element={<>
+                    <Filters changeSel={changeSel} handleLike={handleLike} setChangeSel={setChangeSel} /> <Personality changeSel={changeSel} setChangeSel={setChangeSel} />
+                  </>} />
+                  <Route path='/gender/:gender' element={<>
+                    <Filters changeSel={changeSel} handleLike={handleLike} setChangeSel={setChangeSel} /><Gender changeSel={changeSel} setChangeSel={setChangeSel} />
+                  </>} />
                   <Route path='/user' element={<User />} />
                   <Route path='/profile' element={<Profile />} />
                   <Route path='user/register' element={<Register />} />

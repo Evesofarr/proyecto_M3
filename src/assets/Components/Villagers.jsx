@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PopUp from "../Components/PopUp";
 import VillagersList from "./VillagersList";
 
-export default function Villagers({ changeSel, setChangeSel }) {
+export default function Villagers({ changeSel, setChangeSel, handleLike, heart }) {
 
     const [animals, setAnimals] = useState(null);
     const [filteredAnimals, setFilteredAnimals] = useState(null);
@@ -56,7 +56,7 @@ export default function Villagers({ changeSel, setChangeSel }) {
                 />
                 <button type='submit' className='go'>Search</button>
             </form>
-            {popUp ? <PopUp handleClose={handleClose} animal={animal} /> : ''}
+            {popUp ? <PopUp handleClose={handleClose} handleLike={handleLike} animal={animal} heart={heart} /> : ''}
             {loaded ?
                 <VillagersList popInfo={popInfo} animals={filteredAnimals} />
                 : <div className="loader"><img src="../../../public/loader.gif" alt="" /></div>}

@@ -24,6 +24,8 @@ export default function Profile() {
             <Link to={'/'}>
                 <button className="logout" onClick={handleLogout}>Log Out</button>
             </Link>
+
+            //Hacer que se vea el array de favoritos que tiene que ir en un componente a parte
         </>
     );
 };

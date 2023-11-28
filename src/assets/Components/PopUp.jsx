@@ -1,4 +1,4 @@
-export default function PopUp({ animal, handleClose }) {
+export default function PopUp({ animal, handleClose, handleLike, heart }) {
 
     return (
         <>
@@ -29,7 +29,9 @@ export default function PopUp({ animal, handleClose }) {
                                 color: `#${animal.title_color}`
                             }} className="frase">"{animal.quote}"</p>
                             <a className="linkMoreInfo" target="_blank" href={animal.url}>More info</a>
-                            {localStorage.getItem(`token`) ? <button className="fave">♡</button> : ''}
+
+                            {localStorage.getItem(`token`) ? <button className="fave" onClick={handleLike}>{heart}</button> : ''}
+
                             <button className="cerrar" onClick={handleClose}><img className="cerrarImg" src="../../../public/Close.png" alt="" /></button>
                         </div>
                     </div>

@@ -1,5 +1,3 @@
-el seleccionador no permite usar espacios
-
 la pagina de cargar muestra el error del la api y no queda bien
 
 el registro del usuario
@@ -10,4 +8,7 @@ Modificar el aviso cuando no hay resultados
 
 que en el perfil se vea la lista de los favs
 
-Personality no fucniona
+La palabra Profile no carga cuando estás logeado en el menu de arriba
+
+el buscador no se puede usar cuando estas en algun personaje seleccionado
+
