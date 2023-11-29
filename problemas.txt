@@ -1,11 +1,5 @@
-la pagina de cargar muestra el error del la api y no queda bien
-
 el registro del usuario
 
 poder favear personajes cuando estás dentro
 
 que en el perfil se vea la lista de los favs
-
-La palabra Profile no carga cuando estás logeado en el menu de arriba
-
-el buscador no se puede usar cuando estas en algun personaje seleccionado

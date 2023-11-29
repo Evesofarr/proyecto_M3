@@ -5,6 +5,7 @@ export default function Register() {
     const location = useLocation();
     const isRegisterPage = location.pathname.includes('/register');
     const [user, setUser] = useState('');
+    const [success, setSuccess] = useState(false);
     let navigate = useNavigate();
 
     function apiCall(url, username, password, name, email, faved) {
@@ -18,6 +19,10 @@ export default function Register() {
             .then(res => res.json())
             .then(res => {
                 setUser(res.user);
+                setSuccess(true);
+                setTimeout(() => {
+                    navigate("/user");
+                }, 3000);
             })
             .catch(err => console.log(err));
     };
@@ -30,8 +35,7 @@ export default function Register() {
         const email = e.target.email.value;
         const faved = e.target.faved.value;
         apiCall('http://localhost:3005/api/user/register', username, password, name, email, faved);
-        navigate("/user");
-    }
+    };
 
     return (
         <>
@@ -50,6 +54,13 @@ export default function Register() {
                 <input className="logRegInput" type="text" id="faved" name="faved" style={{ display: "none" }} />
                 <button className="uButton" type="submit">Register</button>
             </form>
+            {success ?
+                <div className="popRegister">
+                    <div className="infoRegister">
+                        <img src="../../../public/welcome.gif" alt="" />
+                    </div>
+                </div >
+                : ''}
         </>
     );
 };
