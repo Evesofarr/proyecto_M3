@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-export default function User() {
+export default function User({ isAuthenticated, setIsAuthenticated }) {
     const [user, setUser] = useState('');
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const location = useLocation();
     const isRegisterPage = location.pathname.includes('/register');

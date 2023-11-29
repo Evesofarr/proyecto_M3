@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function Profile() {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+export default function Profile({ setIsAuthenticated }) {
+
 
     let navigate = useNavigate();
 
@@ -14,16 +14,18 @@ export default function Profile() {
     }, []);
 
     function handleLogout() {
+        setIsAuthenticated(false);
         localStorage.removeItem("token");
+        console.log(localStorage.getItem("token"));
         navigate("/");
     }
 
 
     return (
         <>
-            <Link to={'/'}>
-                <button className="logout" onClick={handleLogout}>Log Out</button>
-            </Link>
+
+            <button className="logout" onClick={handleLogout}>Log Out</button>
+
 
             //Hacer que se vea el array de favoritos que tiene que ir en un componente a parte
         </>

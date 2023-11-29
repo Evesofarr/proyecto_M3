@@ -56,7 +56,7 @@ function App() {
                     </li>
                   </ul>
                 </nav>
-                <div>{localStorage.getItem('token') ? <Link className='linkUser AccesoUsuario' to={'/profile'}>Profile</Link> : <Link className='linkUser' to={'/user'}>Login</Link>}
+                <div>{isAuthenticated ? <Link className='linkUser AccesoUsuario' to={'/profile'}>Profile</Link> : <Link className='linkUser' to={'/user'}>Login</Link>}
 
                 </div>
               </header>
@@ -77,8 +77,8 @@ function App() {
                   <Route path='/gender/:gender' element={<>
                     <Filters changeSel={changeSel} handleLike={handleLike} setChangeSel={setChangeSel} /><Gender changeSel={changeSel} setChangeSel={setChangeSel} heart={heart} />
                   </>} />
-                  <Route path='/user' element={<User />} />
-                  <Route path='/profile' element={<Profile />} />
+                  <Route path='/user' element={<User isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />} />
+                  <Route path='/profile' element={<Profile setIsAuthenticated={setIsAuthenticated} />} />
                   <Route path='user/register' element={<Register />} />
                 </Routes>
               </main>

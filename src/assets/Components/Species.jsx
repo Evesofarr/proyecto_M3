@@ -9,6 +9,7 @@ export default function Species({ changeSel, handleLike, heart }) {
     const [popUp, setPopUp] = useState('');
     const [loaded, setLoaded] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
@@ -28,10 +29,14 @@ export default function Species({ changeSel, handleLike, heart }) {
         fetch(url)
             .then(res => res.json())
             .then(res => {
-                console.log(res);
+                setError(false);
                 setAnimals(res);
                 setFilteredAnimals(res);
                 setLoaded(true);
+            })
+            .catch(e => {
+                setError(true);
+                setLoaded(null);
             });
     };
 
@@ -64,9 +69,10 @@ export default function Species({ changeSel, handleLike, heart }) {
                 <button type='submit' className='go'>Search</button>
             </form> */}
             {popUp ? <PopUp handleClose={handleClose} animal={animal} handleLike={handleLike} heart={heart} /> : ''}
+            {error ? <div className="vibrar"><img src="../../../public/error.png" alt="" /></div> : ''}
             {loaded ?
                 <VillagersList popInfo={popInfo} animals={filteredAnimals} />
-                : <div className="loader"><img src="../../../public/loader.gif" alt="" /></div>}
+                : loaded === false ? <div className="loader"><img src="../../../public/loader.gif" alt="" /></div> : ''}
         </>
     );
 };

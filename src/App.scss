@@ -40,6 +40,15 @@ $tamaño: 80px;
     min-height: 100vh;
 }
 
+.vibrar {
+    animation: vibracion 0.2s ease-in-out infinite;
+    height: 60vw;
+    margin: auto;
+}
+.vibrar img{
+    width: 60em;
+}
+
 @keyframes vibracion {
     0% {
         transform: translate(0);
@@ -62,11 +71,6 @@ $tamaño: 80px;
     }
 }
 
-.vibrar {
-    animation: vibracion 0.2s ease-in-out infinite;
-    width: 1000px;
-    margin-left: 300px;
-}
 
 .amiboImgCont {
     display: flex;
@@ -276,7 +280,9 @@ $tamaño: 80px;
 }
 
 .go,
-.uButton {
+.uButton,
+.logout,
+.fave {
     background-color: #fbeee0;
     border: 2px solid #422800;
     border-radius: 30px;
@@ -325,7 +331,15 @@ $tamaño: 80px;
     background-color: #fff;
 }
 
+.fave:hover {
+    background-color: #fff;
+}
+
 .go:hover {
+    background-color: #fff;
+}
+
+.logout:hover {
     background-color: #fff;
 }
 
@@ -337,7 +351,17 @@ $tamaño: 80px;
     background-color: #fff;
 }
 
+.fave:active {
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
+}
+
 .up:active {
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
+}
+
+.logout:active {
     box-shadow: #422800 2px 2px 0 0;
     transform: translate(2px, 2px);
 }
@@ -382,7 +406,8 @@ $tamaño: 80px;
 .aqui {
     border-bottom: 2px solid grey;
 }
-.oculto{
+
+.oculto {
     display: none;
 }
 
@@ -605,16 +630,20 @@ header {
 .uButtonSpecial {
     font-size: 1.5em;
 }
-.loginForm, .registerForm{
+
+.loginForm,
+.registerForm {
     display: flex;
     flex-direction: column;
     margin: auto;
     align-items: center;
 }
-.uButton{
+
+.uButton {
     width: 7em;
 }
-.loader{
+
+.loader {
     position: absolute;
     z-index: 3;
     top: 50%;

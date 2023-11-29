@@ -2,12 +2,13 @@ import PopUp from "../Components/PopUp";
 import { useEffect, useState } from "react";
 import Card from "./Card";
 
-export default function Home() {
+export default function Home({ handleLike, heart }) {
     const [animal, setAnimal] = useState(null);
     const [popUp, setPopUp] = useState('');
     const [loaded, setLoaded] = useState(false);
     const [filteredAnimals, setFilteredAnimals] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
@@ -28,12 +29,16 @@ export default function Home() {
         fetch(url)
             .then(res => res.json())
             .then(res => {
+                setError(false);
                 setLoaded(true);
                 randomAnimal(res);
                 infinite(res);
 
             })
-            .catch(err => console.log(err));
+            .catch(e => {
+                setError(true);
+                setLoaded(null);
+            });
     };
 
     function infinite(animals) {
@@ -63,10 +68,11 @@ export default function Home() {
 
     return (
         <>
-            {popUp ? <PopUp handleClose={handleClose} animal={animal} /> : ''}
+            {popUp ? <PopUp handleClose={handleClose} animal={animal} handleLike={handleLike} heart={heart} /> : ''}
+            {error ? <div className="vibrar"><img src="../../../public/error.png" alt="" /></div> : ''}
             {loaded ?
                 <Card popInfo={popInfo} animals={filteredAnimals} />
-                : <div className="loader"><img src="../../../public/loader.gif" alt="" /></div>}
+                : loaded === false ? <div className="loader"><img src="../../../public/loader.gif" alt="" /></div> : ''}
         </>
     );
 };
