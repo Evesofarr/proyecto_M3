@@ -57,14 +57,14 @@ export default function Gender({ changeSel }) {
 
     return (
         <>
-            <form className='buscador' onSubmit={handleInputChange}>
+            {/* <form className='buscador' onSubmit={handleInputChange}>
                 <input className='selector'
                     placeholder="Search..."
                     name='villager'
                 />
                 <button type='submit' className='go'>Search</button>
-            </form>
-            {popUp ? <PopUp handleClose={handleClose} animal={animal} /> : ''}
+            </form> */}
+            {popUp ? <PopUp handleClose={handleClose} animal={animal} handleLike={handleLike} heart={heart} /> : ''}
             {loaded ?
                 <VillagersList popInfo={popInfo} animals={filteredAnimals} />
                 : <div className="loader"><img src="../../../public/loader.gif" alt="" /></div>}

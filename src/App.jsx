@@ -38,7 +38,6 @@ function App() {
 
   function handleLike() {
     heart === "♡" ? setHeart("❤") : setHeart("♡");
-    // setHeart(heart === "♡" ? "❤" : "♡");
   };
 
 
@@ -70,13 +69,13 @@ function App() {
                       <Filters changeSel={changeSel} setChangeSel={setChangeSel} handleLike={handleLike} /> <Villagers changeSel={changeSel} handleLike={handleLike} setChangeSel={setChangeSel} heart={heart} />
                     </>} />
                   <Route path='/species/:specie' element={<>
-                    <Filters changeSel={changeSel} handleLike={handleLike} setChangeSel={setChangeSel} /><Species changeSel={changeSel} setChangeSel={setChangeSel} />
+                    <Filters changeSel={changeSel} handleLike={handleLike} setChangeSel={setChangeSel} /><Species changeSel={changeSel} setChangeSel={setChangeSel} heart={heart} />
                   </>} />
                   <Route path='/personality/:personality' element={<>
-                    <Filters changeSel={changeSel} handleLike={handleLike} setChangeSel={setChangeSel} /> <Personality changeSel={changeSel} setChangeSel={setChangeSel} />
+                    <Filters changeSel={changeSel} handleLike={handleLike} setChangeSel={setChangeSel} /> <Personality changeSel={changeSel} setChangeSel={setChangeSel} heart={heart} />
                   </>} />
                   <Route path='/gender/:gender' element={<>
-                    <Filters changeSel={changeSel} handleLike={handleLike} setChangeSel={setChangeSel} /><Gender changeSel={changeSel} setChangeSel={setChangeSel} />
+                    <Filters changeSel={changeSel} handleLike={handleLike} setChangeSel={setChangeSel} /><Gender changeSel={changeSel} setChangeSel={setChangeSel} heart={heart} />
                   </>} />
                   <Route path='/user' element={<User />} />
                   <Route path='/profile' element={<Profile />} />

@@ -4,11 +4,8 @@ el registro del usuario
 
 poder favear personajes cuando estás dentro
 
-Modificar el aviso cuando no hay resultados
-
 que en el perfil se vea la lista de los favs
 
 La palabra Profile no carga cuando estás logeado en el menu de arriba
 
 el buscador no se puede usar cuando estas en algun personaje seleccionado
-
