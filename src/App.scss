@@ -144,7 +144,7 @@ $tamaño: 80px;
 }
 
 .popUp,
-.popRegister {
+.popRegister, .popUser {
     z-index: 10;
     top: 0;
     margin: auto;
@@ -152,6 +152,10 @@ $tamaño: 80px;
     height: 100%;
     background-color: rgb(250, 250, 250, 0.4);
     position: fixed;
+}
+
+.popUser div img{
+    width: 40px;
 }
 
 .frase {
@@ -165,7 +169,7 @@ $tamaño: 80px;
 }
 
 
-.info {
+.info, .infoUser {
     z-index: 19;
     margin: auto;
     width: 60%;
@@ -177,6 +181,10 @@ $tamaño: 80px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.infoUser{
+    background-color: rgb(247 212 178);
 }
 
 .infoRegister {
@@ -465,6 +473,18 @@ header {
     color: #61B948;
     text-shadow: 2px 2px 4px #61B948;
     text-decoration: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.header-logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 1em;
+    padding-bottom: 5px;
 }
 
 .linkVillagers,
@@ -669,4 +689,60 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%);
+}
+
+.switch {
+    width: 2em;
+    background-image: url('ruta/de/la/imagen.jpg');
+    background-size: cover;
+    animation: moveUpDown 4s linear infinite;
+}
+
+@keyframes moveUpDown {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        transform-origin: center center;
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(360deg);
+    }
+}
+
+@keyframes moveRightToLeft {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85%{
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+.lubina img {
+    position: absolute;
+    animation: moveRightToLeft 15s linear infinite;
+    width: 4em;
+    bottom: 2.5em;
+}
+
+.lubina {
+    max-width: 24vw;
+}
+
+.errorRegistro{
+    color: red;
+    padding: 5px;
 }

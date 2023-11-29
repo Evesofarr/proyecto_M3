@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PopUp from "../Components/PopUp";
 import VillagersList from "./VillagersList";
 
-export default function Personality({ changeSel }) {
+export default function Personality({ changeSel, handleLike, heart }) {
     const [animals, setAnimals] = useState(null);
     const [filteredAnimals, setFilteredAnimals] = useState(null);
     const [animal, setAnimal] = useState(null);
@@ -19,7 +19,6 @@ export default function Personality({ changeSel }) {
     }, []);
 
     useEffect(() => {
-        console.log(changeSel);
         if (changeSel !== "") {
             apiCall('http://localhost:3005/api/personality/' + changeSel);
         }
@@ -44,13 +43,6 @@ export default function Personality({ changeSel }) {
         console.log(loaded);
     }, []);
 
-    function handleInputChange(e) {
-        e.preventDefault();
-        console.log(e.target.villager.value);
-
-        setFilteredAnimals([...animals.filter(animal => animal.name.toLowerCase().includes(e.target.villager.value.toLowerCase()))]);
-    };
-
     function handleClose() {
         setPopUp(!popUp);
     };
@@ -65,13 +57,6 @@ export default function Personality({ changeSel }) {
 
     return (
         <>
-            {/* <form className='buscador' onSubmit={handleInputChange}>
-                <input className='selector'
-                    placeholder="Search..."
-                    name='villager'
-                />
-                <button type='submit' className='go'>Search</button>
-            </form> */}
             {popUp ? <PopUp handleClose={handleClose} animal={animal} handleLike={handleLike} heart={heart} /> : ''}
             {error ? <div className="vibrar"><img src="../../../public/error.png" alt="" /></div> : ''}
             {loaded ?

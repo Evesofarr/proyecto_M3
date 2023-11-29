@@ -3,9 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function User({ isAuthenticated, setIsAuthenticated }) {
     const [user, setUser] = useState('');
-
     const location = useLocation();
     const isRegisterPage = location.pathname.includes('/register');
+    const [success, setSuccess] = useState(false);
+    const [popError, setPopError] = useState(false);
 
     function apiCall(url, username, password) {
         fetch(url, {
@@ -17,14 +18,24 @@ export default function User({ isAuthenticated, setIsAuthenticated }) {
         })
             .then(res => res.json())
             .then(res => {
-                setUser(res.user);
                 if (res.access_token) {
                     localStorage.setItem('token', res.access_token);
                     setIsAuthenticated(true);
+                    setSuccess(true);
+                    setUser(res.user);
+                }
+                else {
+                    setPopError(true);
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err =>
+                setSuccess(false));
     };
+
+    function handleClosePop() {
+        setPopError(!popError);
+    };
+
 
     function handleInputLoginChange(e) {
         e.preventDefault();
@@ -56,6 +67,18 @@ export default function User({ isAuthenticated, setIsAuthenticated }) {
                         : <>
                         //Lo que psa cuando estás logeado que aun no lo has metido. deberia ser un map de los animales que tiene en fav el usuario que esta en otro componente
 
+                        </>}
+
+                    {success ?
+                        ''
+                        : <>
+                            {popError ?
+                                <div className="popUser" onClick={handleClosePop}>
+                                    <div className="infoUser">
+                                        <p>X</p>
+                                        <p>Wrong username or password</p>
+                                    </div>
+                                </div > : ''}
                         </>}
                 </>
             )}

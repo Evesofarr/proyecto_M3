@@ -48,7 +48,7 @@ function App() {
           <div className={`theme-${theme}`}>
             <div className="body">
               <header>
-                <Link to="/" className='titulo'><h1  >Nookapedia</h1></Link>
+                <Link to="/" className='titulo'><h1 className='header-logo'><img className="logo" src="../public/ico.png" alt="" /> Nookapedia</h1></Link>
                 <nav>
                   <ul>
                     <li>
@@ -84,10 +84,11 @@ function App() {
               </main>
               <div className='ola'><img src="../public/bgFooter.png" alt="" /></div>
               <footer className='footer'>
-                <p>2023©</p>
+                <img src="../public/switch.png" alt="" className="switch" />
                 <p>Made with MUCHISIMA anxiety y ayuda de Peio ♡</p>
                 <img className='iconoFooter' src="../public/ico.png" alt="Icono Juego" />
               </footer>
+              <div className='lubina'><img src="../public/lubina-unscreen.gif" alt="" /></div>
               <div><a className="up" href="#">TOP</a></div>
             </div>
           </div>

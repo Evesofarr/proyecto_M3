@@ -37,7 +37,6 @@ export default function Villagers({ changeSel, setChangeSel, handleLike, heart }
 
     function handleInputChange(e) {
         e.preventDefault();
-        console.log(e.target.villager.value);
 
         setFilteredAnimals([...animals.filter(animal => animal.name.toLowerCase().includes(e.target.villager.value.toLowerCase()))]);
     };

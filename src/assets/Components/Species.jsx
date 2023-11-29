@@ -40,13 +40,6 @@ export default function Species({ changeSel, handleLike, heart }) {
             });
     };
 
-    function handleInputChange(e) {
-        e.preventDefault();
-        console.log(e.target.villager.value);
-
-        setFilteredAnimals([...animals.filter(animal => animal.name.toLowerCase().includes(e.target.villager.value.toLowerCase()))]);
-    };
-
     function handleClose() {
         setPopUp(!popUp);
     };

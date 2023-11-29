@@ -1,5 +1,14 @@
-el registro del usuario
+el registro del usuario control de duplicados y errores
 
 poder favear personajes cuando estás dentro
 
 que en el perfil se vea la lista de los favs
+
+No se como añadir el array vacio al regu
+
+<los likes van regular
+
+
+EXTRAS:
+
+Boton prev y ant
