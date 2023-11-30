@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function User({ isAuthenticated, setIsAuthenticated }) {
     const [user, setUser] = useState('');
     const location = useLocation();
+    let navigate = useNavigate();
     const isRegisterPage = location.pathname.includes('/register');
     const [success, setSuccess] = useState(false);
     const [popError, setPopError] = useState(false);
@@ -20,9 +21,15 @@ export default function User({ isAuthenticated, setIsAuthenticated }) {
             .then(res => {
                 if (res.access_token) {
                     localStorage.setItem('token', res.access_token);
+                    localStorage.setItem('themeuid', res.user._id);
+                    let favedString = JSON.stringify(res.user.faved);
+                    localStorage.setItem("faved", favedString);
                     setIsAuthenticated(true);
                     setSuccess(true);
                     setUser(res.user);
+                    setTimeout(() => {
+                        navigate("/villagers");
+                    }, 3000);
                 }
                 else {
                     setPopError(true);
@@ -46,8 +53,9 @@ export default function User({ isAuthenticated, setIsAuthenticated }) {
 
     return (
         <>
-            {isAuthenticated ? (
+            {isAuthenticated ? (<>
                 <h1 style={{ color: "grey" }}>Welcome {user.username}</h1>
+                <img className="saludo" src="/public/saludo.gif" alt="" /></>
             ) : (
                 <>
                     {!isAuthenticated ?
@@ -64,19 +72,17 @@ export default function User({ isAuthenticated, setIsAuthenticated }) {
                                 <button className="uButton" type="submit">Login</button>
                             </form>
                         </>
-                        : <>
-                        //Lo que psa cuando estás logeado que aun no lo has metido. deberia ser un map de los animales que tiene en fav el usuario que esta en otro componente
-
-                        </>}
+                        : ''}
 
                     {success ?
                         ''
                         : <>
                             {popError ?
-                                <div className="popUser" onClick={handleClosePop}>
+                                <div className="popUserErr" onClick={handleClosePop}>
                                     <div className="infoUser">
-                                        <p>X</p>
-                                        <p>Wrong username or password</p>
+                                        <p className="closeUser">X</p>
+                                        <p className="msjUser">Did I forgot my own password or username?</p>
+                                        <img className="userImgError" src="../../../public/errorUsuario.gif" alt="" />
                                     </div>
                                 </div > : ''}
                         </>}

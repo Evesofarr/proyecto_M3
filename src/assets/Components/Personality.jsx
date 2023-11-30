@@ -39,10 +39,6 @@ export default function Personality({ changeSel, handleLike, heart }) {
             });
     };
 
-    useEffect(() => {
-        console.log(loaded);
-    }, []);
-
     function handleClose() {
         setPopUp(!popUp);
     };

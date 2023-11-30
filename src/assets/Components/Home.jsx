@@ -21,10 +21,6 @@ export default function Home({ handleLike, heart }) {
         apiCall('http://localhost:3005/api/villagers/');
     }, []);
 
-    useEffect(() => {
-        console.log(filteredAnimals);
-    }, [filteredAnimals]);
-
     function apiCall(url) {
         fetch(url)
             .then(res => res.json())

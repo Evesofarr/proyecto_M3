@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PopUp from "../Components/PopUp";
 import VillagersList from "./VillagersList";
 
-export default function Villagers({ changeSel, setChangeSel, handleLike, heart }) {
+export default function Villagers({ handleLike, heart }) {
 
     const [animals, setAnimals] = useState(null);
     const [filteredAnimals, setFilteredAnimals] = useState(null);

@@ -1,4 +1,11 @@
-export default function VillagersList({ animals, popInfo }) {
+import { useState } from "react";
+
+export default function VillagersList({ animals, popInfo, profile, favorites }) {
+    const [animalsid, setAnimalsid] = useState('');
+    const [error, setError] = useState(false);
+    const [loaded, setLoaded] = useState(false);
+
+
 
     return (
         <div className="div-de-peio">

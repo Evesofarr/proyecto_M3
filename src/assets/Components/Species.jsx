@@ -19,7 +19,6 @@ export default function Species({ changeSel, handleLike, heart }) {
     }, []);
 
     useEffect(() => {
-        console.log(changeSel);
         if (changeSel !== "") {
             apiCall('http://localhost:3005/api/species/' + changeSel);
         }

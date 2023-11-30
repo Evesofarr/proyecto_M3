@@ -13,7 +13,6 @@ export default function Filters({ changeSel, setChangeSel }) {
         fetch(`http://localhost:3005/api/${e.target.value}`)
             .then(res => res.json())
             .then(res => {
-                console.log(res);
                 setOptions(res);
             });
     };

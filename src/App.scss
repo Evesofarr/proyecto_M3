@@ -144,7 +144,8 @@ $tamaño: 80px;
 }
 
 .popUp,
-.popRegister, .popUser {
+.popRegister,
+.popUserErr {
     z-index: 10;
     top: 0;
     margin: auto;
@@ -154,7 +155,7 @@ $tamaño: 80px;
     position: fixed;
 }
 
-.popUser div img{
+.popUser div img {
     width: 40px;
 }
 
@@ -169,7 +170,7 @@ $tamaño: 80px;
 }
 
 
-.info, .infoUser {
+.info {
     z-index: 19;
     margin: auto;
     width: 60%;
@@ -183,8 +184,35 @@ $tamaño: 80px;
     align-items: center;
 }
 
-.infoUser{
+.infoUser {
     background-color: rgb(247 212 178);
+    z-index: 19;
+    margin: auto;
+    width: 40%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userImgError {
+    width: 18em;
+}
+
+.msjUser {
+    font-size: 2em;
+    color: rgb(224, 105, 105);
+    padding: 1.5em;
+}
+
+.favoritos {
+    color: grey;
+    font-size: 3em;
+    letter-spacing: 0.2em;
 }
 
 .infoRegister {
@@ -196,13 +224,6 @@ $tamaño: 80px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.infoRegister img {
-    width: 103%;
 }
 
 .div-de-peio {
@@ -310,7 +331,8 @@ $tamaño: 80px;
 .go,
 .uButton,
 .logout,
-.fave {
+.fave,
+.closeUser {
     background-color: #fbeee0;
     border: 2px solid #422800;
     border-radius: 30px;
@@ -355,7 +377,17 @@ $tamaño: 80px;
     touch-action: manipulation;
 }
 
+.closeUser {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
 .up:hover {
+    background-color: #fff;
+}
+
+.closeUser:hover {
     background-color: #fff;
 }
 
@@ -380,6 +412,11 @@ $tamaño: 80px;
 }
 
 .fave:active {
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
+}
+
+.closeUser:active {
     box-shadow: #422800 2px 2px 0 0;
     transform: translate(2px, 2px);
 }
@@ -470,29 +507,32 @@ header {
 }
 
 .titulo {
-    color: #61B948;
-    text-shadow: 2px 2px 4px #61B948;
     text-decoration: none;
     display: flex;
     flex-direction: row;
+    color: grey;
+    letter-spacing: 2px;
 }
 
-.header-logo{
+.header-logo {
     display: flex;
     align-items: center;
 }
 
 .logo {
     width: 1em;
-    padding-bottom: 5px;
+    margin-bottom: 5px;
+    margin-right: 2px;
+    border: 1px solid black;
+    border-radius: 50%;
 }
 
 .linkVillagers,
 .linkUser {
     text-decoration: none;
     font-size: 30px;
-    color: #61B948;
-    text-shadow: 2px 2px 4px #61B948;
+    color: grey;
+    letter-spacing: 2px;
 }
 
 
@@ -721,7 +761,7 @@ header {
         opacity: 1;
     }
 
-    85%{
+    85% {
         opacity: 1;
     }
 
@@ -742,7 +782,17 @@ header {
     max-width: 24vw;
 }
 
-.errorRegistro{
-    color: red;
+.errorRegistro {
+    color: rgb(224, 105, 105);
     padding: 5px;
+}
+
+.logout {
+    position: absolute;
+    top: 8em;
+    right: 3em;
+}
+
+.saludo{
+    padding-top: 4em;
 }

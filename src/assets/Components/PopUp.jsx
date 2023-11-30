@@ -1,4 +1,53 @@
-export default function PopUp({ animal, handleClose, handleLike, heart }) {
+import { useEffect, useState, useContext } from 'react';
+import { FavsContext } from '../../contexts/favsContext';
+
+export default function PopUp({ animal, handleClose }) {
+    const [heart, setHeart] = useState("♡");
+    const [localFaved, setLocalFaved] = useState(false);
+    const { changedFavs, setChangedFavs } = useContext(FavsContext);
+
+    useEffect(() => {
+        let localFav = localStorage.getItem("faved");
+        localFav = JSON.parse(localFav);
+        let filteredAnimal = [];
+
+        if (localFav.length > 0) {
+            filteredAnimal = localFav.filter(fav => fav === animal.id);
+            if (filteredAnimal.length > 0) {
+                setHeart("❤");
+            } else {
+                setHeart("♡");
+                setChangedFavs(!changedFavs);
+            }
+        } else {
+            setHeart("♡");
+            setChangedFavs(!changedFavs);
+        }
+
+    }, [localFaved]);
+
+
+    function handleLike() {
+        console.log(animal);
+        // heart === "♡" ? setHeart("❤") : setHeart("♡");
+        let userId = localStorage.getItem("themeuid");
+
+        fetch('http://localhost:3005/api/user/updateFaved', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify({ username: userId, id: animal.id })
+        })
+            .then(res => res.json())
+            .then(res => {
+                let favedArray = JSON.stringify(res.faved);
+                localStorage.setItem("faved", favedArray);
+                setLocalFaved(!localFaved);
+            });
+
+    }
 
     return (
         <>

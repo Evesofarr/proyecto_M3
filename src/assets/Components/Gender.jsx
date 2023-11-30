@@ -49,20 +49,12 @@ export default function Gender({ changeSel }) {
 
     function popInfo(id) {
         let filteredAnimal = animals.filter(animal => animal._id === id);
-
         setAnimal(filteredAnimal[0]);
         setPopUp(!popUp);
     };
 
     return (
         <>
-            {/* <form className='buscador' onSubmit={handleInputChange}>
-                <input className='selector'
-                    placeholder="Search..."
-                    name='villager'
-                />
-                <button type='submit' className='go'>Search</button>
-            </form> */}
             {popUp ? <PopUp handleClose={handleClose} animal={animal} handleLike={handleLike} heart={heart} /> : ''}
             {error ? <div className="vibrar"><img src="../../../public/error.png" alt="" /></div> : ''}
             {loaded ?
